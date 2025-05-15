@@ -1,0 +1,738 @@
+         493721 function calls (441554 primitive calls) in 3472.530 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1 3053.454 3053.454 3471.819 3471.819 {built-in method exec_}
+       26    0.001    0.000  745.767   28.683 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:199(as_completed)
+       29    0.005    0.000  745.766   25.716 C:\Program Files\Python313\Lib\threading.py:641(wait)
+       53    0.001    0.000  691.582   13.049 C:\Program Files\Python313\Lib\threading.py:327(wait)
+    78/41    0.527    0.007  339.327    8.276 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:230(read_image)
+        1    0.003    0.003  320.823  320.823 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1354(run)
+        1    0.000    0.000  320.819  320.819 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:754(process_images_threaded)
+        1    0.000    0.000  320.818  320.818 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:646(__exit__)
+        1    0.000    0.000  320.818  320.818 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:220(shutdown)
+        4    0.000    0.000  320.818   80.204 C:\Program Files\Python313\Lib\threading.py:1056(join)
+        4    0.033    0.008  320.818   80.204 {method 'join' of '_thread._ThreadHandle' objects}
+      4/1    0.000    0.000  320.785  320.785 C:\Program Files\Python313\Lib\threading.py:998(_bootstrap)
+      4/1    0.002    0.000  320.785  320.785 C:\Program Files\Python313\Lib\threading.py:1025(_bootstrap_inner)
+      4/1    0.001    0.000  320.785  320.785 C:\Program Files\Python313\Lib\threading.py:981(run)
+      4/1    0.001    0.000  320.784  320.784 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:70(_worker)
+      4/1    0.001    0.000  320.784  320.784 {method 'get' of '_queue.SimpleQueue' objects}
+     25/1    0.290    0.012  320.779  320.779 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:54(run)
+     25/1    0.261    0.010  320.765  320.765 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:668(process_batch)
+  312/294    2.352    0.008  309.221    1.052 {method 'to' of 'torch._C.TensorBase' objects}
+     54/6    2.527    0.047  292.609   48.768 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\as_plugin.py:157(_save_all_heif)
+  133/108    0.056    0.000  263.636    2.441 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3135(frombytes)
+  133/120    0.007    0.000  256.360    2.136 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:845(frombytes)
+    54/48    0.038    0.001  110.580    2.304 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:457(save)
+    78/72    0.003    0.000   93.024    1.292 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\iglovikov_helper_functions\utils\image_utils.py:111(pad_to_size)
+        6   86.093   14.349   86.093   14.349 {getExistingDirectory}
+    54/49    0.240    0.004   85.815    1.751 {method 'write' of '_io.BufferedRandom' objects}
+        5    0.000    0.000   83.880   16.776 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1089(select_input_folder)
+  133/128    2.298    0.017   82.774    0.647 {cvtColor}
+  151/131    0.104    0.001   73.352    0.560 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:766(tobytes)
+    78/66    0.215    0.003   72.185    1.094 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:738(__array_interface__)
+     54/6    0.157    0.003   64.174   10.696 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:456(save_image)
+     54/6    0.011    0.000   64.173   10.695 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:2509(save)
+    73/66    0.178    0.002   59.107    0.896 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:838(apply_filter)
+    78/48    0.121    0.002   51.592    1.075 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\predict_single.py:45(predict_jsons)
+  156/134    0.072    0.000   50.089    0.374 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:146(__call__)
+    78/66    0.003    0.000   47.598    0.721 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:246(__init__)
+    54/47    0.051    0.001   46.179    0.983 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:726(<lambda>)
+    54/49    0.034    0.001   41.047    0.838 {method 'close' of '_io.BufferedRandom' objects}
+  146/131    0.018    0.000   40.854    0.312 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:1278(crop)
+     54/6    0.214    0.004   39.455    6.576 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\as_plugin.py:255(__save_all)
+    62/55    0.297    0.005   33.648    0.612 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:850(<lambda>)
+    78/68    0.111    0.001   30.135    0.443 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:476(__call__)
+    73/69    0.036    0.000   28.994    0.420 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:915(apply_aspect_ratio_filter)
+    78/72    1.893    0.024   28.472    0.395 {copyMakeBorder}
+     54/6    0.433    0.008   28.368    4.728 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\as_plugin.py:269(_pil_encode_image)
+     54/6    0.024    0.000   27.821    4.637 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:387(add_image)
+     54/6    0.014    0.000   27.777    4.630 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:416(_finish_add_image)
+    78/76    0.010    0.000   26.682    0.351 {method 'int' of 'torch._C.TensorBase' objects}
+ 21450/65    0.085    0.000   24.972    0.384 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\module.py:1735(_wrapped_call_impl)
+ 21450/65    0.083    0.000   24.832    0.382 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\module.py:1743(_call_impl)
+    78/29    0.888    0.011   24.175    0.834 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:399(get_face_and_landmarks)
+    14/13    0.762    0.054   23.640    1.818 {warpAffine}
+    78/72    0.093    0.001   23.431    0.325 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\box_utils.py:199(decode)
+  256/215    0.005    0.000   23.272    0.108 {method 'acquire' of '_thread.lock' objects}
+  109/101    0.015    0.000   22.821    0.226 {built-in method nt._path_exists}
+    73/66    0.019    0.000   21.057    0.319 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:553(auto_crop)
+  146/131    0.065    0.000   20.483    0.156 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:1304(_crop)
+    73/69    0.015    0.000   19.738    0.286 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:440(is_frontal_face)
+    39/36    0.028    0.001   19.629    0.545 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:515(crop_frontal_image)
+    78/49    0.007    0.000    9.859    0.201 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:553(read_heif)
+  240/225    8.142    0.034    9.080    0.040 {built-in method builtins.print}
+   156/98   12.430    0.080    8.866    0.090 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:107(load)
+    78/65    7.987    0.102    8.671    0.133 {built-in method torch.where}
+    55/48    0.015    0.000    8.185    0.171 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3253(fromarray)
+  633/588    2.839    0.004    7.665    0.013 {built-in method numpy.array}
+        3    0.030    0.010    6.737    2.246 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1111(load_preview)
+  206/183    0.017    0.000    6.548    0.036 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3083(new)
+     54/6  245.530    4.547    6.221    1.037 {method 'encode' of 'CtxWriteImage' objects}
+    55/48    0.018    0.000    6.022    0.125 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3181(frombuffer)
+  206/183    5.249    0.025    5.755    0.031 {built-in method PIL._imaging.fill}
+       73    5.700    0.078    5.700    0.078 {built-in method PIL._imaging.blend}
+  156/134    0.010    0.000    5.669    0.042 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:193(apply_with_params)
+  151/142    3.404    0.023    5.142    0.036 {method 'join' of 'bytes' objects}
+    78/68    0.026    0.000    4.827    0.071 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\augmentations\transforms.py:245(apply)
+    73/67    0.008    0.000    4.630    0.069 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageEnhance.py:29(enhance)
+  156/134    0.032    0.000    4.288    0.032 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\decorators.py:39(wrapped_function)
+    73/67    0.015    0.000    4.242    0.063 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3554(blend)
+    78/68    0.015    0.000    3.926    0.058 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\functions.py:321(normalize)
+    78/65    0.007    0.000    3.902    0.060 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\network.py:92(forward)
+    99470    3.692    0.000    3.692    0.000 {method 'encode' of 'ImagingEncoder' objects}
+2184/1506    0.029    0.000    3.479    0.002 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:248(forward)
+    62/56    0.088    0.001    3.117    0.056 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageEnhance.py:71(__init__)
+    78/68    0.308    0.004    3.113    0.046 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\functions.py:300(normalize_lut)
+    78/72    0.017    0.000    3.022    0.042 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:41(nms_cpu_fallback)
+       20    0.222    0.011    2.975    0.149 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1139(update_preview_now)
+    78/68    0.004    0.000    2.811    0.041 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\models\_utils.py:66(forward)
+        2    2.717    1.358    2.717    1.358 {critical}
+  143/130    0.020    0.000    2.508    0.019 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:929(convert)
+  143/130    1.820    0.013    2.387    0.018 {method 'convert' of 'ImagingCore' objects}
+        1    0.000    0.000    2.213    2.213 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1094(select_output_folder)
+  133/120    1.902    0.014    2.174    0.018 {method 'decode' of 'ImagingDecoder' objects}
+       54    2.070    0.038    2.070    0.038 {method 'finalize' of 'CtxWrite' objects}
+        1    0.006    0.006    1.910    1.910 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1294(on_finished)
+        1    1.899    1.899    1.899    1.899 {information}
+    78/72    0.097    0.001    1.865    0.026 {method 'argsort' of 'torch._C.TensorBase' objects}
+1248/1021    0.110    0.000    1.853    0.002 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\models\resnet.py:143(forward)
+6396/5571    0.014    0.000    1.789    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\conv.py:553(forward)
+       78    0.020    0.000    1.788    0.023 {method 'unsqueeze' of 'torch._C.TensorBase' objects}
+6396/5571    0.021    0.000    1.725    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\conv.py:536(_conv_forward)
+  234/217    1.536    0.007    1.599    0.007 {LUT}
+  146/131    1.658    0.011    1.573    0.012 {method 'crop' of 'ImagingCore' objects}
+6396/5571    1.817    0.000    1.549    0.000 {built-in method torch.conv2d}
+    78/73    1.123    0.014    1.483    0.020 {merge}
+  624/594    0.063    0.000    1.290    0.002 {built-in method torch.cat}
+    78/74    0.002    0.000    1.187    0.016 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:2103(softmax)
+       34    0.014    0.000    1.134    0.033 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:535(crop_profile_image)
+    78/74    0.031    0.000    1.061    0.014 {method 'softmax' of 'torch._C.TensorBase' objects}
+       19    0.049    0.003    0.954    0.050 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1104(pil_to_pixmap)
+5694/5098    0.026    0.000    0.931    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\batchnorm.py:159(forward)
+    62/58    0.009    0.000    0.896    0.015 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageStat.py:32(__init__)
+    55/52    0.011    0.000    0.874    0.017 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:363(correct_rotation)
+    78/76    0.001    0.000    0.749    0.010 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\augmentations\geometric\resize.py:226(apply)
+4056/3781    0.007    0.000    0.735    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:1693(relu)
+3822/3563    0.006    0.000    0.727    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\activation.py:132(forward)
+  702/697    0.005    0.000    0.665    0.001 {method 'view' of 'torch._C.TensorBase' objects}
+3822/3563    0.141    0.000    0.659    0.000 {built-in method torch.relu_}
+  234/209    0.003    0.000    0.651    0.003 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\network.py:27(forward)
+    62/58    0.001    0.000    0.639    0.011 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:1707(histogram)
+       11    0.029    0.003    0.619    0.056 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:847(<lambda>)
+    62/58    0.622    0.010    0.612    0.011 {method 'histogram' of 'ImagingCore' objects}
+    78/76    0.007    0.000    0.606    0.008 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\augmentations\geometric\functional.py:251(resize)
+5694/5098    0.027    0.000    0.584    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:2791(batch_norm)
+    78/76    0.001    0.000    0.580    0.008 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\utils.py:76(__process_fn)
+        1    0.008    0.008    0.577    0.577 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:947(__init__)
+        1    0.558    0.558    0.566    0.566 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:966(init_ui)
+  156/132    0.003    0.000    0.547    0.004 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:206(_get_bytes)
+    78/70    0.008    0.000    0.531    0.008 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\net.py:84(forward)
+    78/76    0.428    0.005    0.496    0.007 {resize}
+    54/53    0.010    0.000    0.485    0.009 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:344(preinit)
+      702    0.001    0.000    0.440    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:329(__getitem__)
+  858/814    0.001    0.000    0.439    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\activation.py:827(forward)
+5694/5098    0.394    0.000    0.435    0.000 {built-in method torch.batch_norm}
+      702    0.002    0.000    0.431    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:312(_get_abs_string_index)
+  321/295    0.411    0.001    0.409    0.001 {method 'cpu' of 'torch._C.TensorBase' objects}
+    78/71    0.098    0.001    0.389    0.005 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\box_utils.py:225(decode_landm)
+    54/50    0.361    0.007    0.382    0.008 {method 'add_plane' of 'CtxWriteImage' objects}
+  132/120    0.343    0.003    0.375    0.003 {built-in method _io.open}
+  156/148    0.002    0.000    0.356    0.002 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:4453(interpolate)
+  234/201    0.004    0.000    0.355    0.002 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\net.py:56(forward)
+  156/148    0.024    0.000    0.324    0.002 {built-in method torch._C._nn.upsample_nearest2d}
+  858/814    0.002    0.000    0.284    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:1882(leaky_relu)
+       19    0.000    0.000    0.275    0.014 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1194(<lambda>)
+    73/72    0.002    0.000    0.265    0.004 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:180(process_color_profile)
+       19    0.244    0.013    0.244    0.013 {fromImage}
+  858/814    0.236    0.000    0.243    0.000 {built-in method torch._C._nn.leaky_relu_}
+     17/1    0.000    0.000    0.226    0.226 <frozen importlib._bootstrap>:1390(_handle_fromlist)
+     32/1    0.001    0.000    0.224    0.224 <frozen importlib._bootstrap>:480(_call_with_frames_removed)
+     15/7    0.000    0.000    0.224    0.032 <frozen importlib._bootstrap>:304(acquire)
+     13/1    0.001    0.000    0.224    0.224 {built-in method builtins.__import__}
+        5    0.000    0.000    0.223    0.045 <frozen importlib._bootstrap>:463(_lock_unlock_module)
+      9/5    0.000    0.000    0.217    0.043 <frozen importlib._bootstrap>:1304(_find_and_load_unlocked)
+      9/5    0.000    0.000    0.217    0.043 <frozen importlib._bootstrap>:911(_load_unlocked)
+      8/5    0.000    0.000    0.216    0.043 <frozen importlib._bootstrap_external>:1020(exec_module)
+    78/74    0.002    0.000    0.211    0.003 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\ops\boxes.py:13(nms)
+  702/674    0.037    0.000    0.191    0.000 {method 'contiguous' of 'torch._C.TensorBase' objects}
+      8/5    0.000    0.000    0.191    0.038 {built-in method builtins.exec}
+     10/4    0.000    0.000    0.183    0.046 <frozen importlib._bootstrap>:1349(_find_and_load)
+        1    0.000    0.000    0.170    0.170 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\GifImagePlugin.py:1(<module>)
+        1    0.166    0.166    0.166    0.166 {built-in method show}
+        1    0.000    0.000    0.159    0.159 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageMath.py:1(<module>)
+        9    0.005    0.001    0.159    0.018 <frozen importlib._bootstrap>:806(module_from_spec)
+    86/78    0.117    0.001    0.134    0.002 {method 'read' of '_io.BufferedReader' objects}
+  702/692    0.038    0.000    0.115    0.000 {method 'permute' of 'torch._C.TensorBase' objects}
+  234/211    0.003    0.000    0.107    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\network.py:16(forward)
+       78    0.105    0.001    0.105    0.001 {built-in method _pillow_heif.load_file}
+      146    0.003    0.000    0.097    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\linalg\_linalg.py:2575(norm)
+    78/74    0.012    0.000    0.097    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1112(__call__)
+       54    0.094    0.002    0.094    0.002 {method 'set_icc_profile' of 'CtxWriteImage' objects}
+      146    0.011    0.000    0.093    0.001 {method 'dot' of 'numpy.ndarray' objects}
+  234/211    0.002    0.000    0.087    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\network.py:38(forward)
+       11    0.000    0.000    0.081    0.007 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageEnhance.py:92(__init__)
+    56472    0.060    0.000    0.060    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\module.py:1915(__getattr__)
+       19    0.047    0.002    0.047    0.002 {built-in method scaled}
+    21450    0.045    0.000    0.045    0.000 {built-in method torch._C._get_tracing_state}
+      220    0.003    0.000    0.044    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:2241(clip)
+    78/74    0.045    0.001    0.042    0.001 {built-in method torch._ops.torchvision.nms}
+      298    0.001    0.000    0.041    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:51(_wrapfunc)
+        1    0.000    0.000    0.041    0.041 <frozen importlib._bootstrap_external>:1318(create_module)
+   100104    0.040    0.000    0.040    0.000 {method 'append' of 'list' objects}
+      220    0.030    0.000    0.038    0.000 {method 'clip' of 'numpy.generic' objects}
+    54/49    0.034    0.001    0.038    0.001 {built-in method nt.remove}
+    78/74    0.034    0.000    0.036    0.000 {built-in method torch.exp}
+    58/55    0.015    0.000    0.036    0.001 {built-in method nt.mkdir}
+    78/73    0.000    0.000    0.031    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\pooling.py:212(forward)
+    78/73    0.000    0.000    0.031    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_jit_internal.py:614(fn)
+    78/73    0.000    0.000    0.031    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:807(_max_pool2d)
+      234    0.030    0.000    0.030    0.000 {built-in method torch.from_numpy}
+    58/52    0.001    0.000    0.030    0.001 <frozen os>:202(makedirs)
+       25    0.002    0.000    0.026    0.001 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1099(update_progress)
+        8    0.000    0.000    0.024    0.003 <frozen importlib._bootstrap_external>:1093(get_code)
+    78/73    0.028    0.000    0.023    0.000 {built-in method torch.max_pool2d}
+       26    0.003    0.000    0.023    0.001 {method 'emit' of 'PyQt5.QtCore.pyqtBoundSignal' objects}
+        9    0.000    0.000    0.021    0.002 <frozen importlib._bootstrap>:1240(_find_spec)
+        9    0.000    0.000    0.021    0.002 <frozen importlib._bootstrap_external>:1551(find_spec)
+        9    0.000    0.000    0.020    0.002 <frozen importlib._bootstrap_external>:1522(_get_spec)
+  159/155    0.009    0.000    0.020    0.000 {method '__exit__' of '_io._IOBase' objects}
+        9    0.000    0.000    0.019    0.002 <frozen importlib._bootstrap_external>:1624(find_spec)
+  234/223    0.029    0.000    0.018    0.000 {built-in method torch.relu}
+        9    0.000    0.000    0.018    0.002 <frozen importlib._bootstrap_external>:164(_path_isfile)
+     1487    0.017    0.000    0.017    0.000 {built-in method builtins.getattr}
+        1    0.000    0.000    0.017    0.017 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\BmpImagePlugin.py:1(<module>)
+      156    0.001    0.000    0.016    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\autograd\grad_mode.py:80(__enter__)
+      312    0.015    0.000    0.016    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\utils.py:287(ensure_contiguous_output)
+      568    0.012    0.000    0.015    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:587(_new)
+        1    0.013    0.013    0.013    0.013 {built-in method _imp.create_dynamic}
+        8    0.000    0.000    0.013    0.002 <frozen importlib._bootstrap_external>:1214(get_data)
+      702    0.012    0.000    0.012    0.000 {built-in method _operator.index}
+       14    0.011    0.001    0.011    0.001 {getRotationMatrix2D}
+       78    0.008    0.000    0.011    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:152(__init__)
+      133    0.002    0.000    0.010    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:420(_getdecoder)
+      151    0.002    0.000    0.010    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:445(_getencoder)
+     5694    0.004    0.000    0.010    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\batchnorm.py:450(_check_input_dim)
+        8    0.000    0.000    0.010    0.001 <frozen importlib._bootstrap_external>:782(_compile_bytecode)
+      468    0.009    0.000    0.009    0.000 {built-in method torch.is_grad_enabled}
+    58/55    0.004    0.000    0.009    0.000 {built-in method nt._path_isdir}
+        8    0.009    0.001    0.009    0.001 {built-in method _io.open_code}
+       22    0.001    0.000    0.009    0.000 {built-in method builtins.__build_class__}
+        8    0.009    0.001    0.009    0.001 {built-in method marshal.loads}
+      156    0.004    0.000    0.008    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_shape_base_impl.py:1204(tile)
+      220    0.004    0.000    0.008    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\_methods.py:99(_clip)
+      312    0.001    0.000    0.008    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\autograd\grad_mode.py:184(__init__)
+       78    0.002    0.000    0.008    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\retinaface\utils.py:36(tensor_from_rgb_image)
+       73    0.001    0.000    0.008    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageCms.py:244(__init__)
+       25    0.000    0.000    0.007    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:537(set_result)
+       73    0.007    0.000    0.007    0.000 {built-in method PIL._imagingcms.profile_frombytes}
+      165    0.007    0.000    0.007    0.000 {method 'numpy' of 'torch._C.TensorBase' objects}
+      312    0.007    0.000    0.007    0.000 {built-in method torch._C._set_grad_enabled}
+       55    0.006    0.000    0.006    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\iglovikov_helper_functions\utils\image_utils.py:182(unpad_from_size)
+     2184    0.003    0.000    0.006    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:240(__iter__)
+     6162    0.006    0.000    0.006    0.000 {method 'dim' of 'torch._C.TensorBase' objects}
+        3    0.001    0.000    0.006    0.002 C:\Program Files\Python313\Lib\typing.py:2998(__new__)
+     5694    0.003    0.000    0.006    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\backends\__init__.py:38(__get__)
+       55    0.000    0.000    0.006    0.000 C:\Program Files\Python313\Lib\threading.py:428(notify_all)
+      702    0.002    0.000    0.006    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:882(load)
+       25    0.000    0.000    0.006    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:81(add_result)
+5869/4461    0.005    0.000    0.005    0.000 {built-in method builtins.len}
+   186/62    0.001    0.000    0.005    0.000 C:\Program Files\Python313\Lib\functools.py:1026(__get__)
+       30    0.000    0.000    0.005    0.000 C:\Program Files\Python313\Lib\threading.py:620(set)
+        3    0.000    0.000    0.005    0.002 C:\Program Files\Python313\Lib\typing.py:2979(_make_nmtuple)
+       59    0.004    0.000    0.005    0.000 C:\Program Files\Python313\Lib\threading.py:398(notify)
+       62    0.000    0.000    0.005    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageStat.py:120(mean)
+     6371    0.005    0.000    0.005    0.000 {built-in method builtins.isinstance}
+      208    0.001    0.000    0.004    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1085(restart_preview_timer)
+       13    0.001    0.000    0.004    0.000 C:\Program Files\Python313\Lib\typing.py:173(_type_check)
+        1    0.004    0.004    0.004    0.004 {built-in method wait}
+       78    0.002    0.000    0.004    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\utils.py:627(_log_api_usage_once)
+      220    0.002    0.000    0.004    0.000 <frozen ntpath>:222(split)
+      162    0.000    0.000    0.004    0.000 <frozen ntpath>:261(dirname)
+     1674    0.004    0.000    0.004    0.000 {built-in method builtins.hasattr}
+       13    0.000    0.000    0.004    0.000 C:\Program Files\Python313\Lib\typing.py:164(_type_convert)
+       78    0.001    0.000    0.004    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\utils.py:57(maybe_process_in_chunks)
+      208    0.004    0.000    0.004    0.000 {built-in method start}
+        9    0.000    0.000    0.003    0.000 C:\Program Files\Python313\Lib\typing.py:1023(__init__)
+        9    0.003    0.000    0.003    0.000 {built-in method builtins.compile}
+       54    0.001    0.000    0.003    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:368(__init__)
+       62    0.003    0.000    0.003    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageStat.py:96(sum)
+      156    0.001    0.000    0.003    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\autograd\grad_mode.py:84(__exit__)
+       78    0.001    0.000    0.003    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:502(preprocess)
+     2631    0.003    0.000    0.003    0.000 {method 'get' of 'dict' objects}
+     5694    0.003    0.000    0.003    0.000 {built-in method torch._C._get_cudnn_enabled}
+     1024    0.003    0.000    0.003    0.000 {built-in method builtins.max}
+        1    0.000    0.000    0.003    0.003 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1232(start_processing)
+       78    0.001    0.000    0.003    0.000 C:\Program Files\Python313\Lib\functools.py:36(update_wrapper)
+     1483    0.001    0.000    0.003    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:560(im)
+       78    0.003    0.000    0.003    0.000 {built-in method numpy.arange}
+       26    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:145(_path_stat)
+      153    0.002    0.000    0.002    0.000 <frozen ntpath>:99(join)
+      151    0.002    0.000    0.002    0.000 {method 'setimage' of 'ImagingEncoder' objects}
+      330    0.002    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\getlimits.py:697(__init__)
+        2    0.002    0.001    0.002    0.001 {built-in method setEnabled}
+        1    0.002    0.002    0.002    0.002 {method 'disable' of '_lsprof.Profiler' objects}
+       26    0.002    0.000    0.002    0.000 {built-in method nt.stat}
+     10/9    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap>:416(__enter__)
+     5694    0.002    0.000    0.002    0.000 {built-in method torch._C._has_torch_function_variadic}
+      156    0.001    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:269(update_transform_params)
+      394    0.001    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3064(_check_size)
+      165    0.002    0.000    0.002    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     5226    0.002    0.000    0.002    0.000 {built-in method torch._C._has_torch_function_unary}
+       29    0.002    0.000    0.002    0.000 {method 'get_nowait' of '_queue.SimpleQueue' objects}
+       54    0.002    0.000    0.002    0.000 {built-in method _pillow_heif.CtxWrite}
+       78    0.000    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:630(transpose)
+       78    0.002    0.000    0.002    0.000 {built-in method torch._C._log_api_usage_once}
+      216    0.001    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageSequence.py:54(__next__)
+        1    0.000    0.000    0.002    0.002 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:1(<module>)
+       78    0.001    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:250(_conv_type_shape)
+        4    0.002    0.000    0.002    0.000 {built-in method nt.listdir}
+     2186    0.002    0.000    0.002    0.000 {built-in method builtins.iter}
+       78    0.000    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\jit\_trace.py:1321(is_tracing)
+      633    0.002    0.000    0.002    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+       54    0.001    0.000    0.002    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:328(_get_primary_index)
+      702    0.002    0.000    0.002    0.000 {method 'pixel_access' of 'ImagingCore' objects}
+     2419    0.002    0.000    0.002    0.000 {method 'values' of 'dict' objects}
+       73    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageCms.py:994(getProfileDescription)
+        3    0.001    0.000    0.001    0.000 {built-in method addItems}
+      312    0.001    0.000    0.001    0.000 {method 'size' of 'torch._C.TensorBase' objects}
+       78    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:219(_retrieve_exif)
+      351    0.001    0.000    0.001    0.000 {built-in method builtins.all}
+      108    0.000    0.000    0.001    0.000 <frozen ntpath>:243(splitext)
+        9    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:155(_path_is_mode_type)
+       19    0.001    0.000    0.001    0.000 {built-in method setPixmap}
+      774    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:549(__init__)
+      156    0.001    0.000    0.001    0.000 {method 'repeat' of 'numpy.ndarray' objects}
+       78    0.001    0.000    0.001    0.000 {built-in method torch._C._is_tracing}
+        1    0.000    0.000    0.001    0.001 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\JpegImagePlugin.py:1(<module>)
+       54    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:252(_exif_from_pillow)
+      156    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\utils.py:148(convert_value)
+        1    0.001    0.001    0.001    0.001 {built-in method setCentralWidget}
+      526    0.001    0.000    0.001    0.000 {built-in method nt._path_splitroot_ex}
+       45    0.001    0.000    0.001    0.000 {built-in method text}
+        6    0.001    0.000    0.001    0.000 C:\Program Files\Python313\Lib\typing.py:3794(__getattr__)
+        1    0.001    0.001    0.001    0.001 {built-in method setWindowTitle}
+       41    0.001    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:101(_path_join)
+      133    0.001    0.000    0.001    0.000 {built-in method PIL._imaging.raw_decoder}
+        3    0.001    0.000    0.001    0.000 C:\Program Files\Python313\Lib\enum.py:498(__new__)
+      622    0.001    0.000    0.001    0.000 {method 'copy' of 'dict' objects}
+       78    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:180(get_file_mimetype)
+       78    0.001    0.000    0.001    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+        3    0.001    0.000    0.001    0.000 C:\Program Files\Python313\Lib\collections\__init__.py:358(namedtuple)
+      156    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:131(_track_transform_params)
+      133    0.001    0.000    0.001    0.000 {method 'setimage' of 'ImagingDecoder' objects}
+       68    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:121(__init__)
+       60    0.001    0.000    0.001    0.000 {built-in method currentText}
+      108    0.001    0.000    0.001    0.000 <frozen genericpath>:157(_splitext)
+        1    0.000    0.000    0.001    0.001 C:\Program Files\Python313\Lib\typing.py:426(inner)
+      156    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\utils\_contextlib.py:154(__new__)
+        1    0.001    0.001    0.001    0.001 {built-in method setLayout}
+       15    0.001    0.000    0.001    0.000 <frozen importlib._bootstrap>:82(remove)
+        1    0.000    0.000    0.001    0.001 C:\Program Files\Python313\Lib\typing.py:574(__getitem__)
+        1    0.000    0.000    0.001    0.001 C:\Program Files\Python313\Lib\typing.py:753(Union)
+        1    0.001    0.001    0.001    0.001 {built-in method moveToThread}
+      116    0.001    0.000    0.001    0.000 {built-in method builtins.min}
+      420    0.001    0.000    0.001    0.000 {built-in method builtins.abs}
+        8    0.001    0.000    0.001    0.000 {built-in method _imp._fix_co_filename}
+       18    0.001    0.000    0.001    0.000 {method 'connect' of 'PyQt5.QtCore.pyqtBoundSignal' objects}
+      156    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\autograd\grad_mode.py:75(__init__)
+        9    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:1128(find_spec)
+        9    0.001    0.000    0.001    0.000 {built-in method _imp.find_frozen}
+        4    0.001    0.000    0.001    0.000 C:\Program Files\Python313\Lib\weakref.py:369(remove)
+     1404    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:350(__len__)
+       54    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:1515(getexif)
+        5    0.000    0.000    0.001    0.000 C:\Program Files\Python313\Lib\typing.py:789(<genexpr>)
+        1    0.000    0.000    0.001    0.001 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:87(create_required_folders)
+       49    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:645(parent)
+     1703    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:583(mode)
+       78    0.001    0.000    0.001    0.000 {method 'values' of 'collections.OrderedDict' objects}
+       15    0.001    0.000    0.001    0.000 <frozen importlib._bootstrap>:173(__exit__)
+      270    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:2614(seek)
+       54    0.001    0.000    0.001    0.000 {method 'create_image' of 'CtxWrite' objects}
+       92    0.001    0.000    0.001    0.000 {method 'rpartition' of 'str' objects}
+        2    0.001    0.000    0.001    0.000 {built-in method setText}
+       25    0.001    0.000    0.001    0.000 {method '_is_owned' of '_thread.RLock' objects}
+       62    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageStat.py:91(count)
+        6    0.001    0.000    0.001    0.000 {built-in method addWidget}
+       73    0.001    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:1384(getbands)
+        5    0.001    0.000    0.001    0.000 C:\Program Files\Python313\Lib\_weakrefset.py:39(_remove)
+       51    0.000    0.000    0.001    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:177(_yield_finished_futures)
+       19    0.001    0.000    0.001    0.000 {built-in method size}
+       54    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:115(_get_orientation_for_encoder)
+  183/175    0.000    0.000    0.001    0.000 {built-in method __new__ of type object at 0x00007FFA5F4A28A0}
+      514    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:571(width)
+      468    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:4573(<genexpr>)
+       25    0.000    0.000    0.001    0.000 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:165(submit)
+        1    0.001    0.001    0.001    0.001 {built-in method setValue}
+        1    0.001    0.001    0.001    0.001 {built-in method setInterval}
+        8    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:1233(path_stats)
+       20    0.001    0.000    0.001    0.000 {built-in method value}
+      146    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3388(_decompression_bomb_check)
+       78    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:775(_check_shape_consistency)
+       78    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:589(postprocess)
+        2    0.000    0.000    0.001    0.000 C:\Program Files\Python313\Lib\re\__init__.py:287(compile)
+        2    0.000    0.000    0.001    0.000 C:\Program Files\Python313\Lib\re\__init__.py:330(_compile)
+        3    0.001    0.000    0.001    0.000 {built-in method builtins.eval}
+        1    0.001    0.001    0.001    0.001 {built-in method setAlignment}
+       54    0.000    0.000    0.001    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:652(_ensure_mutable)
+        9    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:733(_init_module_attrs)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:145(_get_orientation)
+      291    0.000    0.000    0.000    0.000 {method 'update' of 'dict' objects}
+      220    0.000    0.000    0.000    0.000 <frozen ntpath>:34(_get_bothseps)
+       16    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:513(cache_from_source)
+      151    0.000    0.000    0.000    0.000 {built-in method PIL._imaging.raw_encoder}
+      213    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:303(__enter__)
+     1560    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:579(size)
+      514    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:575(height)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\augmentations\geometric\resize.py:362(get_params_dependent_on_data)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:315(data)
+      110    0.000    0.000    0.000    0.000 {method 'tolist' of 'numpy.ndarray' objects}
+      392    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:743(compile)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:184(_adjust_thread_count)
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:397(__iter__)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:982(find_spec)
+       25    0.000    0.000    0.000    0.000 {method 'reverse' of 'list' objects}
+      146    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:52(__init__)
+       17    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:632(cached)
+      359    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        9    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:642(_get_cached)
+        1    0.000    0.000    0.000    0.000 {built-in method quit}
+       30    0.000    0.000    0.000    0.000 {method 'put' of '_queue.SimpleQueue' objects}
+      234    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albucore\utils.py:125(get_num_channels)
+        1    0.000    0.000    0.000    0.000 {built-in method setRange}
+        6    0.000    0.000    0.000    0.000 {built-in method addLayout}
+      312    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\functional.py:4389(_is_integer)
+       78    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\functools.py:66(wraps)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:57(data)
+      348    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+      568    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:567(im)
+       55    0.000    0.000    0.000    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:417(<lambda>)
+        1    0.000    0.000    0.000    0.000 {built-in method setFixedSize}
+        4    0.000    0.000    0.000    0.000 {built-in method setChecked}
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:251(__set_name__)
+      312    0.000    0.000    0.000    0.000 {built-in method numpy.ascontiguousarray}
+      560    0.000    0.000    0.000    0.000 {built-in method nt.fspath}
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:275(check_data_post_transform)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\nn\modules\container.py:541(items)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:552(_preprocess_processors)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:562(_preprocess_arrays)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:702(_check_shapes)
+      146    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:89(save_colorspace_chroma)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1619(_get_spec)
+      456    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:749(_get_data_shape)
+      146    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+      108    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageSequence.py:36(__init__)
+       62    0.000    0.000    0.000    0.000 {built-in method builtins.sum}
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:472(acquire)
+        3    0.000    0.000    0.000    0.000 {built-in method addRow}
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:970(parse)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:354(_get_heif_meta)
+      213    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:306(__exit__)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:162(__enter__)
+       24    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:354(__setitem__)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:239(_retrieve_xmp)
+       73    0.000    0.000    0.000    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:819(map_slider_to_multiplier)
+       10    0.000    0.000    0.000    0.000 {built-in method isChecked}
+        1    0.000    0.000    0.000    0.000 {built-in method resize}
+      513    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:186(should_apply)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:262(_xmp_from_pillow)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:833(spec_from_file_location)
+      312    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_shape_base_impl.py:1287(<genexpr>)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:484(__prepare__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1318(__init__)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\extension.py:44(_assert_has_ops)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:451(_parse_sub)
+      156    0.000    0.000    0.000    0.000 {built-in method builtins.round}
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:426(_get_module_lock)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\_util.py:9(is_path)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:428(result)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:124(setdefault)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:953(start)
+       91    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+      358    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:4167(__len__)
+      210    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+      102    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:576(_code)
+      110    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\getlimits.py:708(min)
+      468    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_jit_internal.py:103(is_scripting)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:283(_pil_to_supported_mode)
+      100    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.RLock' objects}
+      314    0.000    0.000    0.000    0.000 {built-in method builtins.issubclass}
+      233    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+       78    0.000    0.000    0.000    0.000 {method 'get_aux_type' of 'CtxImage' objects}
+       87    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:318(_is_owned)
+      220    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\getlimits.py:721(max)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:511(_parse)
+        4    0.000    0.000    0.000    0.000 {built-in method _thread.start_joinable_thread}
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:328(__init__)
+       32    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:281(__init__)
+      146    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\linalg\_linalg.py:128(isComplexType)
+       54    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PpmImagePlugin.py:1(<module>)
+      5/4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:869(__init__)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:372(release)
+       16    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:137(_path_split)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:631(clear)
+       26    0.000    0.000    0.000    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:1351(is_cancelled)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:497(set_running_or_notify_cancel)
+       54    0.000    0.000    0.000    0.000 {method 'set_parameter' of 'CtxWrite' objects}
+      234    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:331(info)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1214(__getattr__)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:420(__exit__)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:120(_get_orientation_xmp)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1423(__init__)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:190(_path_abspath)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\GifImagePlugin.py:54(LoadingStrategy)
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_shape_base_impl.py:1200(_tile_dispatcher)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:177(_path_isabs)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:626(_transpose_dispatcher)
+       53    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:315(_acquire_restore)
+       78    0.000    0.000    0.000    0.000 {method 'random' of '_random.Random' objects}
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1055(_add_member_)
+      220    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\fromnumeric.py:2236(_clip_dispatcher)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1427(current_thread)
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:697(_classify_pyc)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:514(_compile_info)
+       26    0.000    0.000    0.000    0.000 {built-in method builtins.delattr}
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:352(targets_as_params)
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:942(_get_mixins_)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:65(add_result)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:287(mode)
+      214    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+      117    0.000    0.000    0.000    0.000 C:\Users\Marwane\Documents\DOCUMENTOS\GitHub\test_bat_images\Cropper_project\crops_lips.py:519(<genexpr>)
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\lib\_shape_base_impl.py:1277(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:2128(getLogger)
+       72    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:445(cb)
+       78    0.000    0.000    0.000    0.000 {method 'count' of 'list' objects}
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:74(__new__)
+       73    0.000    0.000    0.000    0.000 {method 'read' of '_io.BytesIO' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1016(__init__)
+       61    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+      142    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+      146    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\linalg\_linalg.py:2571(_norm_dispatcher)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:567(_preprocess_images)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:288(has_deadlock)
+       50    0.000    0.000    0.000    0.000 {method 'remove' of 'set' objects}
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1397(__init__)
+      113    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3905(__init__)
+      4/2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:37(_compile)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:104(Disposal)
+       36    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1226(__exit__)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:163(__len__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:1361(getLogger)
+       26    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:760(__delattr__)
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:983(_find_data_type_)
+      150    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:89(_unpack_uint32)
+       63    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       40    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+       72    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1096(__eq__)
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:232(__init__)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:578(_preprocess_masks)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1254(_get_packet)
+      146    0.000    0.000    0.000    0.000 {built-in method numpy.asarray}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:125(Blend)
+       63    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3641(register_open)
+       53    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:312(_release_save)
+       73    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageCms.py:270(_set)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:519(release)
+      2/1    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+       48    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:139(<genexpr>)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:4179(__contains__)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\misc.py:340(__get_camera_intrinsic_matrix)
+        7    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1368(__setattr__)
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:730(_validate_timestamp_pyc)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:932(_check_for_existing_members_)
+        2    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1024(<genexpr>)
+      156    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:265(get_params)
+       61    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:155(_create_and_install_waiters)
+       24    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:78(_is_private)
+        1    0.000    0.000    0.000    0.000 {built-in method torch._C._jit_get_operation}
+       53    0.000    0.000    0.000    0.000 {method 'remove' of 'collections.deque' objects}
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torchvision\extension.py:37(_has_ops)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1009(_has_script_object_arg)
+       54    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:79(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1603(__and__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageMode.py:37(getmode)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:379(_remove_dups_flatten)
+       70    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\numpy\_core\multiarray.py:761(dot)
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:592(__init__)
+       14    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:825(__setattr__)
+       52    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\GifImagePlugin.py:78(GifImageFile)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1307(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1010(_find_new_)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageMath.py:27(_Operand)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:127(__init__)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:183(_has_deadlocked)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:260(_collect_type_parameters)
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:48(_new_module)
+       53    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+        9    0.000    0.000    0.000    0.000 {built-in method nt._path_splitroot}
+      108    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageSequence.py:51(__iter__)
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:674(_check_name_wrapper)
+       14    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3706(register_extension)
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:241(_optimize_charset)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\BmpImagePlugin.py:63(BmpImageFile)
+        3    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3717(register_extensions)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:147(__enter__)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:122(RLock)
+       52    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:491(_verbose_message)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1326(exec_module)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:346(__init__)
+       36    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1222(__enter__)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1047(_delete)
+        4    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1010(<genexpr>)
+       24    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:58(_is_sunder)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\ImageChops.py:1(<module>)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:337(_invoke_callbacks)
+       21    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:47(_is_dunder)
+       54    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:2699(tell)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:37(_is_descriptor)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\composition.py:425(strict)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\pillow_heif\heif.py:279(size)
+       54    0.000    0.000    0.000    0.000 {method 'get' of 'mappingproxy' objects}
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:1409(_fixupParents)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:144(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:1477(__init__)
+       30    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+       23    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:167(__getitem__)
+       78    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\albumentations\core\transforms_interface.py:302(get_params_dependent_on_data)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:77(__init__)
+        9    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\_distutils_hack\__init__.py:101(find_spec)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:67(_relax_case)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:111(get)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\_ops.py:1047(_schemas)
+       15    0.000    0.000    0.000    0.000 {built-in method _weakref._remove_dead_weakref}
+      4/2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:177(getwidth)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:461(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:230(__init__)
+        6    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3664(register_mime)
+        1    0.000    0.000    0.000    0.000 <string>:1(<lambda>)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:398(__get_result)
+       50    0.000    0.000    0.000    0.000 {built-in method time.monotonic}
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1585(_get_value)
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1500(_path_importer_cache)
+        7    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1294(_is_dunder)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:151(__exit__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\JpegPresets.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:351(_deduplicate)
+       11    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:260(get)
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\_weakrefset.py:85(add)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:61(__init__)
+        1    0.000    0.000    0.000    0.000 {built-in method torch._C._get_schema}
+        9    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+       11    0.000    0.000    0.000    0.000 {method 'setdefault' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:695(__call__)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\weakref.py:427(__setitem__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1382(__del__)
+       25    0.000    0.000    0.000    0.000 {method 'acquire' of '_thread.RLock' objects}
+       12    0.000    0.000    0.000    0.000 {built-in method sys.intern}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PpmImagePlugin.py:163(PpmPlainDecoder)
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:214(_compile_charset)
+        6    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3679(register_save)
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1022(_set_native_id)
+       13    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:239(__next)
+        3    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3738(register_decoder)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\types.py:334(__getattr__)
+       25    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\thread.py:48(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\multiprocessing\context.py:41(cpu_count)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:379(PngStream)
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1018(_set_ident)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\jit\_builtins.py:188(_register_builtin)
+       12    0.000    0.000    0.000    0.000 {method '__contains__' of 'frozenset' objects}
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:599(__init__)
+        9    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:175(append)
+        5    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:250(iTXt)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:69(_is_internal_class)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:439(_get_literal_prefix)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1371(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\JpegImagePlugin.py:335(JpegImageFile)
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.vars}
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1265(_make_invoke_excepthook)
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_dynamic}
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1184(__init__)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:961(_find_data_repr_)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1122(_is_unpacked_typevartuple)
+        5    0.000    0.000    0.000    0.000 {method 'discard' of 'set' objects}
+       10    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:412(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:401(_simple)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:223(<genexpr>)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:371(_escape)
+       15    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:158(__init__)
+       12    0.000    0.000    0.000    0.000 {method 'isidentifier' of 'str' objects}
+        5    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:1427(<genexpr>)
+       25    0.000    0.000    0.000    0.000 {method 'release' of '_thread.RLock' objects}
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:470(_get_charset_prefix)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:750(PngImageFile)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\BmpImagePlugin.py:321(BmpRleDecoder)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1145(daemon)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:292(tell)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\GifImagePlugin.py:643(_Frame)
+       12    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\collections\__init__.py:432(<genexpr>)
+        3    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:3112(_namedtuple_mro_entries)
+        1    0.000    0.000    0.000    0.000 {built-in method fromkeys}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.cpu_count}
+        9    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:653(has_location)
+        2    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\Image.py:3692(register_save_all)
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\typing.py:3004(<genexpr>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:156(ChunkStream)
+        2    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:573(isstring)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\functools.py:1011(__init__)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1152(__new__)
+        5    0.000    0.000    0.000    0.000 {built-in method _thread.get_native_id}
+        6    0.000    0.000    0.000    0.000 {method 'pop' of 'set' objects}
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1209(get_filename)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:82(groups)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:954(fix_flags)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:605(is_set)
+        5    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PpmImagePlugin.py:57(PpmImageFile)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\BmpImagePlugin.py:397(DibImageFile)
+        8    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1017(create_module)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:1307(append)
+        6    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:255(match)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:1213(__init__)
+        8    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\enum.py:248(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:277(PngInfo)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:76(__init__)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:112(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:1124(_idat)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:1148(_Frame)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PpmImagePlugin.py:300(PpmDecoder)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:373(_RewindState)
+        4    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_compiler.py:431(_get_iscased)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:843(_newname)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:205(_checkLevel)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\functools.py:1017(__set_name__)
+        1    0.000    0.000    0.000    0.000 {built-in method setSingleShot}
+        1    0.000    0.000    0.000    0.000 {built-in method _thread._make_thread_handle}
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\PIL\PngImagePlugin.py:1135(_fdat)
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.daemon_threads_allowed}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.id}
+        3    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\threading.py:1110(ident)
+        2    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\re\_parser.py:171(__setitem__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\logging\__init__.py:819(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Users\Marwane\AppData\Roaming\Python\Python313\site-packages\torch\jit\_builtins.py:148(_get_builtin_table)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1307(__init__)
+        1    0.000    0.000    0.000    0.000 C:\Program Files\Python313\Lib\concurrent\futures\_base.py:643(__enter__)
+
+
