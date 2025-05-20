@@ -1,152 +1,166 @@
-# gradio_app.py
-
 import os
+import tempfile
+import shutil
+
 import gradio as gr
+from config import get_preset_labels, key_for_label, get_preset_by_key
 
 # Core image‐handling and crop routines
-from Cropper_project.cropper import (
+from cropper import (
     get_face_and_landmarks,
     auto_crop,
-    crop_frontal_image_preview,
-    crop_profile_image_preview,
-    crop_chin_image,
-    crop_nose_image,
-    crop_below_lips_image,
     apply_aspect_ratio_filter,
     apply_filter,
 )
 
-# Batch‐processing orchestration
-from processing import process_images_threaded
-
-
 def generate_preview(
-    input_folder, frontal_margin, profile_margin,
-    sharpen, use_frontal, use_profile, correct_rotation,
-    crop_style, filter_name, intensity, aspect_ratio
+    input_files,  # <-- this will be a list
+    margin, filter_name, intensity, aspect_ratio
 ):
-    valid_exts = (".jpg", ".jpeg", ".png", ".heic")
-    files = [f for f in os.listdir(input_folder) if f.lower().endswith(valid_exts)]
-    if not files:
-        return None
+    # 1️⃣ Guard against “no files uploaded”
+    if not input_files:
+        return None, None, "❌ No files uploaded."
 
-    file_path = os.path.join(input_folder, files[0])
-    result = get_face_and_landmarks(
-        file_path, sharpen=sharpen, apply_rotation=correct_rotation
-    )
-    if not result or not result[0] or not result[1]:
-        return None
+    # 2️⃣ Pick the first file from the list
+    file_obj = input_files[0]
+    img_path = file_obj.name
 
-    box, landmarks, cv_img, pil_img, metadata = result
+    try:
+        result = get_face_and_landmarks(img_path, sharpen=False, apply_rotation=True)
+        if not result or not result[0] or not result[1]:
+            return None, None, "❌ No face detected."
 
-    funcs = {
-        "auto": lambda: auto_crop(pil_img, frontal_margin, profile_margin, box, landmarks, metadata),
-        "frontal": lambda: crop_frontal_image_preview(pil_img, box, landmarks, metadata, margin=frontal_margin, lip_offset=50) if use_frontal else None,
-        "profile": lambda: crop_profile_image_preview(pil_img, box, metadata, margin=profile_margin, neck_offset=50) if use_profile else None,
-        "chin": lambda: crop_chin_image(pil_img, margin=frontal_margin, box=box, metadata=metadata, chin_offset=20),
-        "nose": lambda: crop_nose_image(pil_img, box, landmarks, metadata, margin=0),
-        "below_lips": lambda: crop_below_lips_image(pil_img, margin=frontal_margin, landmarks=landmarks, metadata=metadata, offset=10),
-    }
+        box, landmarks, cv_img, pil_img, metadata = result
 
-    cropped = funcs.get(crop_style, lambda: None)()
-    if cropped is None:
-        return None
+        cropped = auto_crop(pil_img, margin, margin, box, landmarks, metadata)
+        if aspect_ratio:
+            cropped = apply_aspect_ratio_filter(cropped, aspect_ratio)
+        cropped = apply_filter(cropped, filter_name, intensity)
 
-    # Enforce aspect ratio and filter
-    if aspect_ratio:
-        cropped = apply_aspect_ratio_filter(cropped, aspect_ratio)
-    cropped = apply_filter(cropped, filter_name, intensity)
-    return cropped
-
+        return pil_img, cropped, "✅ Preview generated."
+    except Exception as e:
+        return None, None, f"❌ Error during preview: {e}"
 
 def process_images(
-    input_folder, output_folder,
-    frontal_margin, profile_margin,
-    sharpen, use_frontal, use_profile, correct_rotation,
-    crop_style, filter_name, intensity, aspect_ratio,
-    progress=gr.Progress()
+    input_files, margin, filter_name, intensity, aspect_ratio
 ):
-    def update_progress(current, total, message):
-        progress((current / total), f"Processed {current}/{total}: {message}")
+    """
+    Takes multiple uploaded files, auto‐crops each, writes them to a temp
+    folder, zips that folder, and returns a status + download link.
+    """
+    try:
+        if not input_files:
+            return "❌ No files uploaded.", None
 
-    processed, total = process_images_threaded(
-        input_folder=input_folder,
-        output_folder=output_folder,
-        frontal_margin=frontal_margin,
-        profile_margin=profile_margin,
-        sharpen=sharpen,
-        use_frontal=use_frontal,
-        use_profile=use_profile,
-        progress_callback=update_progress,
-        cancel_func=lambda: False,
-        apply_rotation=correct_rotation,
-        crop_style=crop_style,
-        filter_name=filter_name,
-        filter_intensity=intensity,
-        aspect_ratio=aspect_ratio
+        # Create a temporary directory
+        tmp_dir = tempfile.mkdtemp(prefix="cropped_")
+        for file in input_files:
+            # run the same pipeline per image
+            result = get_face_and_landmarks(
+                file.name,
+                sharpen=False,
+                apply_rotation=True
+            )
+            if not result or not result[0] or not result[1]:
+                continue  # skip non‐faces
+
+            box, landmarks, cv_img, pil_img, metadata = result
+            cropped = auto_crop(pil_img, margin, margin, box, landmarks, metadata)
+            if aspect_ratio:
+                cropped = apply_aspect_ratio_filter(cropped, aspect_ratio)
+            cropped = apply_filter(cropped, filter_name, intensity)
+
+            # Save out
+            base = os.path.basename(file.name)
+            name, ext = os.path.splitext(base)
+            out_path = os.path.join(tmp_dir, f"{name}_cropped{ext}")
+            cropped.save(out_path)
+
+        # Zip the folder
+        zip_path = shutil.make_archive(tmp_dir, 'zip', tmp_dir)
+        return f"✅ Processed {len(os.listdir(tmp_dir))} images.", zip_path
+    except Exception as e:
+        return f"❌ Error: {str(e)}", None
+
+with gr.Blocks(title="🔪 One-Click Image Cropper") as demo:
+    # ——— Header —————————————
+    gr.Markdown(
+        """
+        ## 📸 One-Click Portrait Cropper
+        Upload one or more images, and get perfectly centered, social-media ready portraits instantly.
+        """
     )
-    return f"Completed: {processed}/{total} images"
 
-
-with gr.Blocks(title="Image Cropper") as demo:
     with gr.Row():
         with gr.Column(scale=1):
-            input_folder   = gr.Textbox(label="Input Folder", placeholder="Path to input folder")
-            output_folder  = gr.Textbox(label="Output Folder", placeholder="Path to output folder")
-            load_preview   = gr.Button("Load Preview")
-            start_process  = gr.Button("Start Processing")
-            cancel_process = gr.Button("Cancel")
+            # ——— Preset selector ——————
+            preset_dd = gr.Dropdown(
+                choices=get_preset_labels(),
+                value=(get_preset_labels()[0] if get_preset_labels() else None),
+                label="Preset"
+            )
 
-            frontal_margin = gr.Number(20, label="Frontal Margin (px)")
-            profile_margin = gr.Number(20, label="Profile Margin (px)")
-            sharpen_cb     = gr.Checkbox(True, label="Sharpen Image")
-            frontal_cb     = gr.Checkbox(True, label="Use Frontal Cropping")
-            profile_cb     = gr.Checkbox(True, label="Use Profile Cropping")
-            rotation_cb    = gr.Checkbox(True, label="Correct Face Rotation")
+            # ——— File uploader ——————
+            input_files = gr.File(
+                label="Upload Images",
+                file_count="multiple",
+                file_types=[".jpg", ".jpeg", ".png"]
+            )
 
-            crop_style     = gr.Dropdown(
-                                ["auto","frontal","profile","chin","nose","below_lips"],
-                                value="auto", label="Crop Style"
-                              )
-            filter_name    = gr.Dropdown(
-                                ["None","Brightness","Contrast","Blur","Edge Detection"],
-                                value="None", label="Filter"
-                              )
-            intensity      = gr.Slider(0, 100, value=50, label="Intensity")
-            aspect_ratio   = gr.Dropdown(
-                                {"3:2":3/2, "4:3":4/3, "16:9":16/9},
-                                value=None, label="Aspect Ratio"
-                             )
+            # ——— Parameters ——————
+            margin = gr.Number(
+                value=30, label="Crop Margin (px)",
+                info="Padding around the detected face"
+            )
+            filter_name = gr.Dropdown(
+                choices=["None", "Brightness", "Contrast", "Blur", "Edge Detection"],
+                value="None", label="Filter"
+            )
+            intensity = gr.Slider(
+                minimum=0, maximum=100, value=50, label="Filter Intensity"
+            )
+            aspect_ratio = gr.Dropdown(
+                choices={"None": None, "4:3": 4/3, "3:2": 3/2, "16:9": 16/9},
+                value=None, label="Aspect Ratio"
+            )
+
+            # ——— Action buttons ——————
+            preview_btn  = gr.Button("🔍 Preview First Image")
+            process_btn  = gr.Button("🚀 Process & Download All")
 
         with gr.Column(scale=1):
-            preview_img = gr.Image(label="Preview", interactive=False)
-            status      = gr.Textbox(label="Status", interactive=False)
-            progress_ui = gr.Progress()
+            # ——— Outputs ——————
+            original_img = gr.Image(label="Original", interactive=False)
+            preview_img  = gr.Image(label="Cropped Preview", interactive=False)
+            status       = gr.Textbox(label="Status", interactive=False)
+            download_zip = gr.File(label="Download Results")
 
-    # Wire up events
-    load_preview.click(
+    # ——— Bind Preset → margin & aspect_ratio ——————
+    def apply_preset(label):
+        key = key_for_label(label)
+        cfg = get_preset_by_key(key)
+        m = cfg.get("margin", 30)
+        return m, cfg.get("target_ratio", None)
+
+    preset_dd.change(
+        fn=apply_preset,
+        inputs=[preset_dd],
+        outputs=[margin, aspect_ratio]
+    )
+
+    # ——— Preview event ——————
+    preview_btn.click(
         fn=generate_preview,
-        inputs=[
-            input_folder, frontal_margin, profile_margin,
-            sharpen_cb, frontal_cb, profile_cb, rotation_cb,
-            crop_style, filter_name, intensity, aspect_ratio
-        ],
-        outputs=preview_img
+        inputs=[input_files, margin, filter_name, intensity, aspect_ratio],
+        outputs=[original_img, preview_img, status]
     )
 
-    start_process.click(
+    # ——— Batch process event ——————
+    process_btn.click(
         fn=process_images,
-        inputs=[
-            input_folder, output_folder,
-            frontal_margin, profile_margin,
-            sharpen_cb, frontal_cb, profile_cb, rotation_cb,
-            crop_style, filter_name, intensity, aspect_ratio
-        ],
-        outputs=status
+        inputs=[input_files, margin, filter_name, intensity, aspect_ratio],
+        outputs=[status, download_zip]
     )
-
-    cancel_process.click(lambda: "Processing cancelled.", outputs=status)
 
 if __name__ == "__main__":
     demo.launch(server_name="0.0.0.0", server_port=7860, debug=True, share=True)
-# Note: The above code assumes that the necessary functions and modules are defined in the same directory.

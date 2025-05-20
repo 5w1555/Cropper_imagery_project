@@ -3,7 +3,7 @@ import concurrent.futures
 import multiprocessing
 
 
-from Cropper_project.cropper import (
+from cropper import (
     get_face_and_landmarks,
     is_frontal_face,
     crop_frontal_image,
