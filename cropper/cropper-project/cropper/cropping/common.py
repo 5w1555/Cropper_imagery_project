@@ -1,0 +1,1 @@
+# This file may include shared functions or constants used across different cropping strategies.

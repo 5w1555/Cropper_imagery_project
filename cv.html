@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Alternance — Wafik Marwane</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e293b;
+      --primary-light: #334155;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --success: #10b981;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --gap: 16px;
+      --sidebar-width: 260px;
+      --gradient-primary: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 16px;
+    }
+    
+    .container {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    
+
+    
+    .sidebar {
+      background: var(--gradient-primary);
+      color: var(--white);
+      padding: var(--gap);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      pointer-events: none;
+    }
+    
+    .sidebar > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .sidebar .photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+    
+    .sidebar .photo:hover {
+      transform: scale(1.05);
+    }
+    
+    .section-title {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      padding-left: 16px;
+    }
+    
+    .section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent-light);
+      border-radius: 50%;
+    }
+    
+    .contact, .infos, .formation {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .contact p, .infos p, .formation p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.85rem;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .contact p:last-child, .infos p:last-child, .formation p:last-child {
+      border-bottom: none;
+    }
+    
+    .contact a {
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact a:hover {
+      color: var(--white);
+    }
+    
+    .skills .skill-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      grid-template-columns: 1fr;
+    }
+    
+    .skills .skill-list span {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .skills .skill-list span:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .languages ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .languages li {
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .languages li:last-child {
+      border-bottom: none;
+    }
+    
+    .sidebar.right {
+      background: var(--gradient-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .main {
+      padding: var(--gap);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      background: var(--white);
+    }
+    
+    .header {
+      text-align: center;
+      padding: 12px 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: var(--gap);
+    }
+    
+    .header h1 {
+      font-size: 1.9rem;
+      color: var(--dark);
+      font-weight: 700;
+      margin-bottom: 6px;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .header .subtitle {
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .section {
+      background: var(--light);
+      padding: var(--gap);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gradient-accent);
+    }
+    
+    .section:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    
+    .section h2 {
+      font-size: 1.3rem;
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: var(--gap);
+      position: relative;
+      padding-left: 16px;
+    }
+    
+    .section h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    
+    .section p {
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding: 12px 0 12px 32px;
+      margin-bottom: 12px;
+      border-left: 2px solid var(--border);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 16px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 3px var(--accent);
+    }
+    
+    .timeline-item h3 {
+      font-size: 1rem;
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    
+    .timeline-item ul {
+      margin-left: 16px;
+      color: var(--text-light);
+    }
+    
+    .timeline-item li {
+      margin-bottom: 2px;
+      position: relative;
+    }
+    
+    .timeline-item li::marker {
+      color: var(--accent);
+    }
+    
+    @media (max-width: 1000px) {
+      .container {
+        grid-template-columns: 1fr;
+        margin: 10px;
+      }
+      
+      .sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 16px;
+      }
+      
+      .sidebar .photo {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+      
+      .sidebar > div {
+        min-width: 200px;
+      }
+      
+      .main {
+        padding: var(--gap);
+      }
+      
+      .header h1 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      
+      .sidebar, .sidebar.right {
+        flex-direction: column;
+        overflow-x: visible;
+      }
+      
+      .sidebar > div {
+        min-width: auto;
+      }
+      
+      .header h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="https://avatars.githubusercontent.com/TechBooper?s=200" alt="Photo Wafik Marwane" class="photo">
+      <div class="contact">
+        <div class="section-title">Contact</div>
+        <p>Gennevilliers, Île-de-France</p>
+        <p>Permis en cours</p>
+        <p>Mobilité : 1h30/2h</p>
+        <p><a href="tel:+33781323803">Tel: 07 81 32 38 03</a></p>
+        <p><a href="mailto:Marwanewafik2@gmail.com">Email: Marwanewafik2@gmail.com</a></p>
+        <p><a href="https://github.com/TechBooper" target="_blank">github.com/TechBooper</a></p>
+      </div>
+      <div class="infos">
+        <div class="section-title">Alternance/Stage</div>
+        <p>Graduate Front‑End Developer (STUDI)</p>
+        <p>Rythme : À la convenance de l'entreprise</p>
+        <p>Disponibilité : Immédiate</p>
+      </div>
+      <div class="formation">
+        <div class="section-title">Formation</div>
+        <p>OpenClassrooms — Développeur Concepteur Logiciel Python (RNCP Niveau 6) | 2023</p>
+        <p>Université Paris 8 — Licence Psychologie (L2/L3) | 2019–2022</p>
+      </div>
+      <div class="skills">
+        <div class="section-title">Compétences</div>
+        <div class="skill-list">
+          <span>JavaScript</span>
+          <span>React.js</span>
+          <span>HTML5 & CSS3</span>
+          <span>Python</span>
+          <span>Django & DRF</span>
+          <span>CI/CD (GitLab)</span>
+          <span>Docker & Nginx</span>
+          <span>PostgreSQL</span>
+          <span>Tests TDD</span>
+          <span>REST API</span>
+        </div>
+      </div>
+    </aside>
+    
+    <main class="main">
+      <div class="header">
+        <h1>Wafik Marwane</h1>
+        <div class="subtitle">24 ans • Graduate Front‑End Developer</div>
+      </div>
+      
+      <section class="section">
+        <h2>Profil</h2>
+        <p>Développeur full-stack passionné avec une expertise en détection faciale et automatisation CI/CD. Fort de plus de 10 projets aboutis utilisant Python, Django et React, je maîtrise les pipelines Docker et les tests TDD pour garantir des déploiements fiables et rapides. À la recherche d'une alternance ou d'un stage pour mettre en pratique mes compétences techniques dans un environnement professionnel stimulant.</p>
+      </section>
+      
+      <section class="section">
+        <h2>Projets Techniques</h2>
+        <div class="timeline-item">
+          <h3>cropper_imagery (Python, OpenCV, PyQt5)</h3>
+          <ul>
+            <li>Développement d'un système de recadrage facial optimisé via landmarks</li>
+            <li>Traitement automatisé avec suppression de background pour 1 000+ images</li>
+            <li>Prototype multithread opérationnel développé en seulement 3 jours</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Application Django CRUD & API</h3>
+          <ul>
+            <li>Création d'une API RESTful complète (SQLite & PostgreSQL)</li>
+            <li>Implémentation d'une authentification JWT avec gestion des rôles</li>
+            <li>Mise en place d'un pipeline CI/CD GitLab avec Docker (staging & production)</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Pipeline CI/CD & Automatisation</h3>
+          <ul>
+            <li>Tests automatisés avec Unittest & Pytest (Coverage ≥ 80%)</li>
+            <li>Déploiement automatisé optimisé en 2 minutes sur DigitalOcean</li>
+            <li>Documentation technique auto-générée avec Sphinx</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Shopify OAuth App (React, Node.js, Render)</h3>
+          <ul>
+            <li>Intégration de sélection de points relais entre Shopify & Boxtal</li>
+            <li>Authentification OAuth sécurisée et robuste</li>
+            <li>Interface utilisateur responsive développée en React.js avec Hooks</li>
+          </ul>
+        </div>
+      </section>
+      
+      <section class="section">
+        <h2>Langues</h2>
+        <ul style="list-style: none; margin: 0;">
+          <li style="padding: 4px 0; border-bottom: 1px solid var(--border);">Français : Natif</li>
+          <li style="padding: 4px 0;">Anglais : C2 (Bilingue)</li>
+        </ul>
+      </section>
+    </main>
+
+  </div>
+</body>
+</html>

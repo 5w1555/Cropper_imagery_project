@@ -1,6 +1,6 @@
 import os
 import io
-import base64
+import math
 
 import cv2
 import numpy as np
@@ -344,59 +344,59 @@ def enhance_lighting_for_faces(cv_img):
 
     return result
 
-
 def correct_rotation_roi_transparent(pil_img, landmarks, box):
     """
-    Rotate just the face ROI with transparent background, then paste back
-    onto the original image—preserving surrounding pixels.
+    Rotate the entire image around the face-center so that eyes are level,
+    then update landmarks accordingly. This avoids partial-ROI artifacts.
     Args:
         pil_img: full PIL.Image in RGB
-        landmarks: dict with 'left_eye' and 'right_eye'
+        landmarks: dict with keys 'left_eye', 'right_eye', etc.
         box: [x1, y1, x2, y2]
     Returns:
-        (new_pil_img, updated_landmarks)
+        (rotated_pil_img, updated_landmarks)
     """
+    # unpack box
     x1, y1, x2, y2 = map(int, box)
-    roi = pil_img.crop((x1, y1, x2, y2))
-    
-    # compute angle
-    l = np.array(landmarks['left_eye']) - np.array([x1, y1])
-    r = np.array(landmarks['right_eye']) - np.array([x1, y1])
+    # compute eye coordinates
+    l = np.array(landmarks['left_eye'])
+    r = np.array(landmarks['right_eye'])
+    # compute angle to horizontal
     dy, dx = (r - l)[1], (r - l)[0]
     angle = np.degrees(np.arctan2(dy, dx))
-    if abs(angle) < 1:
+    # if nearly straight, skip
+    if abs(angle) < 0.5:
         return pil_img, landmarks
-    
-    # convert ROI to RGBA and rotate with transparent fill
-    roi_rgba = roi.convert("RGBA")
-    rotated = roi_rgba.rotate(-angle, resample=Image.BICUBIC, expand=True, fillcolor=(0,0,0,0))
-    
-    # center-crop rotated back to original size
-    w0, h0 = roi.size
-    w1, h1 = rotated.size
-    left = (w1 - w0) // 2
-    top = (h1 - h0) // 2
-    rotated_crop = rotated.crop((left, top, left + w0, top + h0))
-    
-    # paste rotated ROI back onto original
-    canvas = pil_img.convert("RGBA")
-    canvas.paste(rotated_crop, (x1, y1), rotated_crop)
-    new_pil = canvas.convert("RGB")
-    
-    # update eye landmarks
-    # compute rotation matrix
-    M = cv2.getRotationMatrix2D((w0/2, h0/2), -angle, 1.0)
-    def transform_point(pt):
-        pt_arr = np.dot(M, [pt[0] - x1, pt[1] - y1, 1])
-        return (pt_arr[0] + x1, pt_arr[1] + y1)
+
+    # center of rotation: midpoint between eyes
+    cx, cy = float(l[0] + r[0]) / 2.0, float(l[1] + r[1]) / 2.0
+
+    # rotate full image around (cx, cy)
+    # Pillow >=8 supports center+expand=False
+    try:
+        rotated = pil_img.rotate(-angle, resample=Image.BICUBIC, center=(cx, cy), expand=False)
+    except TypeError:
+        # fallback: convert to OpenCV, rotate, convert back
+        cv_img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+        M = cv2.getRotationMatrix2D((cx, cy), -angle, 1.0)
+        h, w = cv_img.shape[:2]
+        rotated_cv = cv2.warpAffine(cv_img, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+        rotated = Image.fromarray(cv2.cvtColor(rotated_cv, cv2.COLOR_BGR2RGB))
+
+    # build rotation matrix for landmarks
+    M = cv2.getRotationMatrix2D((cx, cy), -angle, 1.0)
+
+    def rotate_point(pt):
+        x, y = pt
+        v = np.dot(M, np.array([x, y, 1.0]))
+        return (v[0], v[1])
+
     updated_landmarks = {
-        'left_eye': transform_point(landmarks['left_eye']),
-        'right_eye': transform_point(landmarks['right_eye']),
-        'nose': landmarks['nose'],
-        'mouth_left': landmarks['mouth_left'],
-        'mouth_right': landmarks['mouth_right'],
+        k: rotate_point(v)
+        for k, v in landmarks.items()
     }
-    return new_pil, updated_landmarks
+
+    return rotated, updated_landmarks
+
 
 
 def simple_nms(boxes, scores, iou_threshold=0.5):
@@ -440,130 +440,107 @@ def simple_nms(boxes, scores, iou_threshold=0.5):
 
 def get_face_and_landmarks(input_path, conf_threshold=0.3, sharpen=True, apply_rotation=True):
     """
-    Detect face and landmarks using RetinaFace, with CPU fallback for NMS and robust validation.
-    Args:
-        input_path (str): Path to the image file
-        conf_threshold (float): Confidence threshold for face detection
-        sharpen (bool): Apply sharpening filter
-        apply_rotation (bool): Apply rotation correction based on eye positions
+    Detect face and landmarks using RetinaFace, with fallback NMS and robust validation.
+
     Returns:
-        tuple: (box, landmarks, cv_img, pil_img, metadata) or (None, None, None, None, metadata) if detection fails
+        tuple: (box, landmarks, cv_img, pil_img, metadata)
+               If detection fails, `box` is None.
     """
-    # Read image and validate input
-    # Why: Ensures valid input image, critical for headshots
+    # Step 1: Load and validate image
     cv_img, pil_img, metadata = read_image(input_path, sharpen=sharpen)
+
     if cv_img is None:
-        print(f"Error: Failed to read image at {input_path}.")
+        print(f"[Error] Could not read image at: {input_path}")
         return None, None, None, None, {}
 
-    # Validate input format
-    # Why: Ensures cv_img is a NumPy array for predict_jsons
     if not isinstance(cv_img, np.ndarray):
-        print(f"Error: Input image for {input_path} is not a NumPy array, got type {type(cv_img)}.")
-        return None, None, None, None, metadata
+        print(f"[Error] Image is not a NumPy array: {type(cv_img)}")
+        return None, None, cv_img, pil_img, metadata
 
-    # Apply NMS patch dynamically
-    # Why: Ensures patch is used during predict_jsons, avoiding global side effects
+    # Step 2: Run detection (with fallback attempts)
     try:
         with torch.no_grad():
-            _original_nms = ops.nms
-            ops.nms = nms_cpu_fallback  # Use existing nms_cpu_fallback
-            annotations = model.predict_jsons(cv_img, confidence_threshold=conf_threshold, nms_threshold=0.4)
-            ops.nms = _original_nms
+            original_nms = ops.nms
+            ops.nms = nms_cpu_fallback
+            annotations = model.predict_jsons(
+                cv_img,
+                confidence_threshold=conf_threshold,
+                nms_threshold=0.4
+            )
+            ops.nms = original_nms
     except Exception as e:
-        print(f"Detection error: {e}")
-        # Try fallback with adjusted thresholds
-        # Why: Retries detection with lower confidence and higher NMS to increase success
+        print(f"[Warning] Detection failed: {e}")
+        print("Trying fallback with relaxed thresholds...")
+
         try:
-            print("Attempting fallback detection with adjusted thresholds...")
             with torch.no_grad():
-                _original_nms = ops.nms
                 ops.nms = nms_cpu_fallback
-                # Lower confidence, higher NMS to reduce overlaps
-                annotations = model.predict_jsons(cv_img, confidence_threshold=0.1, nms_threshold=0.6)
-                ops.nms = _original_nms
+                annotations = model.predict_jsons(
+                    cv_img,
+                    confidence_threshold=0.1,
+                    nms_threshold=0.6
+                )
+                ops.nms = original_nms
         except Exception as e2:
-            print(f"Fallback detection error: {e2}")
-            # Final attempt with default parameters
-            try:
-                print("Attempting final fallback with default parameters...")
-                with torch.no_grad():
-                    _original_nms = ops.nms
-                    ops.nms = nms_cpu_fallback
-                    annotations = model.predict_jsons(cv_img)  # Default parameters
-                    ops.nms = _original_nms
-            except Exception as e3:
-                print(f"Final fallback detection error: {e3}")
-                return None, None, None, None, metadata
+            print(f"[Error] Fallback detection failed: {e2}")
+            return None, None, cv_img, pil_img, metadata
 
-    # Filter valid detections
-    # Why: Ensures only high-confidence faces are processed
-    valid_detections = [det for det in annotations if det["score"] >= conf_threshold]
-    if not valid_detections:
-        print(f"Warning: No faces detected in {input_path} with confidence >= {conf_threshold}.")
-        return None, None, None, None, metadata
+    # Step 3: Validate detections
+    valid = [d for d in annotations if d.get("score", 0) >= conf_threshold]
+    if not valid:
+        print(f"[Info] No face detected in: {input_path}")
+        return None, None, cv_img, pil_img, metadata
 
-    # Select best detection
-    # Why: Uses highest-confidence face, suitable for headshots
-    best_det = max(valid_detections, key=lambda x: x["score"])
-    
-    # Validate landmarks
-    # Why: Prevents missing mouth landmarks
-    if "landmarks" not in best_det or len(best_det["landmarks"]) < 5:
-        print(f"Error: Incomplete landmarks detected in {input_path}. Got {len(best_det.get('landmarks', []))} landmarks, expected 5.")
-        return None, None, None, None, metadata
+    best = max(valid, key=lambda d: d["score"])
+    box = best.get("bbox")
 
-    # Extract bounding box and landmarks
-    box = best_det.get("bbox")
     if not box or len(box) < 4:
-        print(f"Error: Invalid bounding box in {input_path}: {box}")
-        return None, None, None, None, metadata
+        print(f"[Error] Invalid bounding box in: {input_path}")
+        return None, None, cv_img, pil_img, metadata
+
+    # Step 4: Extract and validate landmarks
+    raw_landmarks = best.get("landmarks", [])
+    if len(raw_landmarks) < 5:
+        print(f"[Error] Incomplete landmarks in: {input_path}")
+        return None, None, cv_img, pil_img, metadata
 
     landmarks = {
-        "left_eye": best_det["landmarks"][0],
-        "right_eye": best_det["landmarks"][1],
-        "nose": best_det["landmarks"][2],
-        "mouth_left": best_det["landmarks"][3],
-        "mouth_right": best_det["landmarks"][4],
+        "left_eye": raw_landmarks[0],
+        "right_eye": raw_landmarks[1],
+        "nose": raw_landmarks[2],
+        "mouth_left": raw_landmarks[3],
+        "mouth_right": raw_landmarks[4],
     }
 
-    # Validate landmark coordinates
-    # Why: Ensures robust cropping for headshots
-    for key, point in landmarks.items():
-        if not isinstance(point, (list, tuple)) or len(point) < 2 or not all(isinstance(v, (int, float)) for v in point):
-            print(f"Warning: Invalid landmark '{key}' in {input_path}: {point}. Estimating landmarks.")
+    for k, pt in landmarks.items():
+        if not isinstance(pt, (list, tuple)) or len(pt) < 2:
+            print(f"[Warning] Bad landmark '{k}' in: {input_path}. Estimating instead.")
             x1, y1, x2, y2 = box
-            face_width = x2 - x1
-            face_height = y2 - y1
+            w, h = x2 - x1, y2 - y1
             landmarks = {
-                "left_eye": (x1 + face_width * 0.3, y1 + face_height * 0.3),
-                "right_eye": (x1 + face_width * 0.7, y1 + face_height * 0.3),
-                "nose": (x1 + face_width * 0.5, y1 + face_height * 0.5),
-                "mouth_left": (x1 + face_width * 0.4, y1 + face_height * 0.8),
-                "mouth_right": (x1 + face_width * 0.6, y1 + face_height * 0.8),
+                "left_eye":   (x1 + 0.3 * w, y1 + 0.3 * h),
+                "right_eye":  (x1 + 0.7 * w, y1 + 0.3 * h),
+                "nose":       (x1 + 0.5 * w, y1 + 0.5 * h),
+                "mouth_left": (x1 + 0.4 * w, y1 + 0.8 * h),
+                "mouth_right":(x1 + 0.6 * w, y1 + 0.8 * h),
             }
             break
 
-    # Log detection details
-    # Why: Aids debugging detection issues
-    print(f"Detected box for {input_path}: {box}")
-    print(f"Detected landmarks for {input_path}: {landmarks}")
+    print(f"[OK] Detected face at: {box}")
+    print(f"[OK] Landmarks: {landmarks}")
 
-    # Apply rotation
-    # Why: Maintains headshot alignment
+    # Step 5: Apply rotation if needed
     if apply_rotation:
         try:
-            # ROI‐based rotation returns a PIL image + new landmarks
-            rotated_pil, corrected_landmarks = correct_rotation_roi_transparent(
-                pil_img, landmarks, box, fill=(255,255,255)
-            )
-            # convert that back into BGR for downstream
+            rotated_pil, new_landmarks = correct_rotation_roi_transparent(pil_img, landmarks, box)
             rotated_cv = cv2.cvtColor(np.array(rotated_pil), cv2.COLOR_RGB2BGR)
-            return box, corrected_landmarks, rotated_cv, rotated_pil, metadata
+            return box, new_landmarks, rotated_cv, rotated_pil, metadata
         except Exception as e:
-            print(f"Rotation correction error: {e}")
-            # fallback to the unrotated versions
+            print(f"[Warning] Rotation correction failed: {e}")
+            # fallback to original
             return box, landmarks, cv_img, pil_img, metadata
+
+    return box, landmarks, cv_img, pil_img, metadata
 
 
 def is_frontal_face(landmarks):
@@ -605,8 +582,6 @@ def save_image(cropped_img, output_path, metadata, output_format=None, jpeg_qual
         bool: True if saved successfully, False otherwise.
     """
     try:
-        # Create output directory if it doesn't exist
-        # Why: Kept as is; necessary for robust file saving, minimal overhead
         outdir = os.path.dirname(output_path)
         if outdir:
             os.makedirs(outdir, exist_ok=True)
@@ -777,73 +752,136 @@ def crop_profile_image(pil_img, box=None, metadata={}, margin=20, neck_offset=50
         print(f"Error during profile crop: {e}")
         return None
 
+import cv2
+import numpy as np
+from PIL import Image
+from torchvision.ops import nms
+# assume get_model has already been called, so `model` is your RetinaFace instance
+
 def head_bust_crop(input_path,
-                   model,
                    margin=40,
                    target_ratio=None,
                    conf_threshold=0.3):
     """
-    1) Detect face + landmarks via RetinaFace
-    2) Rotate just the face ROI to level the eyes (transparent fill)
-    3) Expand by `margin` px on all sides
-    4) (Optional) Aspect-ratio crop around the margin-expanded box
-    Returns PIL.Image or None on failure.
+    Reworked to avoid off-set rotations:
+    1) First try without rotation
+    2) If face is significantly tilted, apply minimal rotation
+    3) Approximate hairline and crop head-bust region
+    4) Apply margins and aspect ratio
     """
-    # --- Load & detect ---
-    cv_img = cv2.imread(input_path)
-    ann = model.predict_jsons(cv_img, confidence_threshold=conf_threshold)
-    if not ann:
-        print("No face detected")
+    
+    # First attempt: get face without rotation
+    box, landmarks, _, pil_img, _ = get_face_and_landmarks(
+        input_path,
+        conf_threshold=conf_threshold,
+        apply_rotation=False
+    )
+    
+    if box is None:
         return None
-    det = ann[0]
-    x1,y1,x2,y2 = map(int, det["bbox"])
-    lm = dict(zip(
-        ("left_eye","right_eye","nose","mouth_left","mouth_right"),
-        det["landmarks"]
-    ))
-
-    # --- Open as PIL & extract ROI ---
-    pil = Image.open(input_path).convert("RGBA")
-    roi = pil.crop((x1,y1,x2,y2))
-
-    # --- Compute tilt & rotate ROI transparently ---
-    l = np.array(lm["left_eye"])  - [x1,y1]
-    r = np.array(lm["right_eye"]) - [x1,y1]
-    angle = np.degrees(np.arctan2((r-l)[1], (r-l)[0]))
-    if abs(angle) >= 1:
-        roi = roi.rotate(-angle,
-                         resample=Image.BICUBIC,
-                         expand=True,
-                         fillcolor=(0,0,0,0))
-        # center-crop back
-        w0,h0 = x2-x1, y2-y1
-        w1,h1 = roi.size
-        offx, offy = (w1-w0)//2, (h1-h0)//2
-        roi = roi.crop((offx, offy, offx+w0, offy+h0))
-
-    # --- Drop alpha, expand by margin, then final crop ---
-    face = roi.convert("RGB")
-    w_img, h_img = face.size
-    ex1, ey1 = max(0, -margin), max(0, -margin)
-    ex2, ey2 = min(w_img, w_img+margin), min(h_img, h_img+margin)
-    bust = face.crop((ex1, ey1, ex2, ey2))
-
-    # --- Optional aspect-ratio trim ---
+    
+    # Check if we need rotation based on landmarks
+    needs_rotation = False
+    rotation_applied = False
+    
+    if landmarks is not None and len(landmarks) >= 2:
+        # Calculate eye alignment (assuming first two landmarks are eyes)
+        try:
+            left_eye = landmarks[0]
+            right_eye = landmarks[1]
+            
+            # Calculate angle
+            dx = right_eye[0] - left_eye[0]
+            dy = right_eye[1] - left_eye[1]
+            angle = abs(math.degrees(math.atan2(dy, dx)))
+            
+            # Only rotate if angle is moderate (not extreme)
+            if 3 < angle <= 12:
+                needs_rotation = True
+        except:
+            pass
+    
+    # Apply rotation only if needed and not extreme
+    if needs_rotation:
+        try:
+            box, landmarks, _, rotated_pil, _ = get_face_and_landmarks(
+                input_path,
+                conf_threshold=conf_threshold,
+                apply_rotation=True
+            )
+            
+            if box is not None:
+                pil_img = rotated_pil
+                rotation_applied = True
+            # If rotation fails, continue with original
+        except:
+            pass
+    
+    # Use original detection if rotation wasn't applied or failed
+    if not rotation_applied:
+        box, landmarks, _, pil_img, _ = get_face_and_landmarks(
+            input_path,
+            conf_threshold=conf_threshold,
+            apply_rotation=False
+        )
+        
+        if box is None:
+            return None
+    
+    # Unpack face box
+    x1, y1, x2, y2 = map(int, box)
+    face_h = y2 - y1
+    face_w = x2 - x1
+    
+    # Conservative hairline estimation
+    hair_offset = int(face_h * 0.3)  # Reduced from 0.4
+    
+    # Calculate crop boundaries
+    top = max(0, y1 - hair_offset - margin)
+    bottom = min(pil_img.height, y2 + margin)
+    
+    # Extend sides proportionally to face width
+    side_margin = max(margin, int(face_w * 0.2))
+    left = max(0, x1 - side_margin)
+    right = min(pil_img.width, x2 + side_margin)
+    
+    # Ensure minimum crop size
+    min_size = max(face_h, face_w) + 2 * margin
+    crop_w = right - left
+    crop_h = bottom - top
+    
+    if crop_w < min_size:
+        center_x = (left + right) // 2
+        left = max(0, center_x - min_size // 2)
+        right = min(pil_img.width, left + min_size)
+    
+    if crop_h < min_size:
+        center_y = (top + bottom) // 2
+        top = max(0, center_y - min_size // 2)
+        bottom = min(pil_img.height, top + min_size)
+    
+    # Crop the image
+    bust = pil_img.crop((left, top, right, bottom)).convert("RGB")
+    
+    # Apply aspect ratio if specified
     if target_ratio:
         w, h = bust.size
         curr = w / h
-        if curr > target_ratio:
-            # too wide
-            nw = int(h * target_ratio)
-            dx = (w - nw)//2
-            bust = bust.crop((dx, 0, dx+nw, h))
-        else:
-            # too tall
-            nh = int(w / target_ratio)
-            dy = (h - nh)//2
-            bust = bust.crop((0, dy, w, dy+nh))
-
+        
+        if abs(curr - target_ratio) > 0.05:  # Only adjust if significantly different
+            if curr > target_ratio:
+                # Too wide - crop horizontally
+                new_w = int(h * target_ratio)
+                dx = (w - new_w) // 2
+                bust = bust.crop((dx, 0, dx + new_w, h))
+            else:
+                # Too tall - crop vertically
+                new_h = int(w / target_ratio)
+                dy = (h - new_h) // 2
+                bust = bust.crop((0, dy, w, dy + new_h))
+    
     return bust
+
 
 def auto_crop(pil_img, frontal_margin, profile_margin, box, landmarks, metadata, lip_offset=50, neck_offset=50):
     """

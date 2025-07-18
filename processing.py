@@ -144,7 +144,7 @@ def process_images_threaded(
                 crop_style,
                 filter_name,
                 filter_intensity,
-                aspect_ratio  # Passing aspect ratio along
+                aspect_ratio
             ): batch
             for batch in batches
         }
