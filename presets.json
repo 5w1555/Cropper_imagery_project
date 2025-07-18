@@ -1,23 +1,57 @@
 {
-  "square_avatar": {
-    "name": "Square Avatar (1×1)",
+  "instagram_square": {
+    "name": "Instagram Square (1×1)",
     "margin": 30,
-    "target_ratio": 1.0
+    "target_ratio": "1:1",
+    "crop_method": "auto"
   },
-  "portrait": {
-    "name": "Portrait (4×5)",
+  "instagram_portrait": {
+    "name": "Instagram Portrait (4×5)",
     "margin": 30,
-    "target_ratio": 0.8
+    "target_ratio": "4:5",
+    "crop_method": "auto"
+  },
+  "instagram_landscape": {
+    "name": "Instagram Landscape (1.91:1)",
+    "margin": 30,
+    "target_ratio": "1.91:1",
+    "crop_method": "auto"
+  },
+  "instagram_story": {
+    "name": "Instagram Story (9×16)",
+    "margin": 30,
+    "target_ratio": "9:16",
+    "crop_method": "auto"
+  },
+  "35mm": {
+    "name": "35 mm Photo (3×2)",
+    "margin": 30,
+    "target_ratio": "3:2",
+    "crop_method": "auto"
+  },
+  "medium_format": {
+    "name": "Medium Format (5×4)",
+    "margin": 30,
+    "target_ratio": "5:4",
+    "crop_method": "auto"
+  },
+  "widescreen": {
+    "name": "Widescreen (16×9)",
+    "margin": 30,
+    "target_ratio": "16:9",
+    "crop_method": "auto"
   },
   "headbust": {
     "name": "Head-bust Only",
     "margin": 20,
-    "target_ratio": null
+    "target_ratio": "None",
+    "crop_method": "headbust"
   },
   "circle_avatar": {
     "name": "Circle Avatar",
     "margin": 30,
-    "target_ratio": 1.0,
-    "mask": "circle"
+    "target_ratio": "None",
+    "mask": "circle",
+    "crop_method": "auto"
   }
 }
