@@ -37,8 +37,8 @@ cropper_imagery/
 
 ### 1. Installation
 
-git clone https://github.com/TechBooper/cropper_imagery.git
-cd cropper_imagery
+git clone https://github.com/TechBooper/Cropper_imagery_project
+cd Cropper_imagery_project
 pip install -r requirements.txt
 
 ### 2. Traitement d’un dossier
@@ -67,7 +67,7 @@ python gradio_app.py
 
 ## 🙋‍♂️ Pourquoi ce projet ?
 
-Je m'appelle **Marwane Wafik**, développeur Python junior basé en Île-de-France. Ce projet a été conçu comme un exercice technique, avec des **cas d’usage réels**.
+Je m'appelle **Marwane Wafik**, développeur Python basé en Île-de-France. Ce projet a été conçu comme un exercice technique, avec des **cas d’usage réels**.
 
 🔧 J’utilise Python pour automatiser, structurer et proposer des solutions simples à des problèmes précis.
 🎯 Objectif court terme : rejoindre une équipe tech (freelance, CDI, CDD, alternance ou stage accepté).
