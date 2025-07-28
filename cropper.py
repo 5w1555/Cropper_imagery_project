@@ -644,8 +644,6 @@ def save_image(cropped_img, output_path, metadata, output_format=None, jpeg_qual
         elif fmt == "JPEG":
             # Use OpenCV for faster JPEG saving instead of PIL
             # Why: OpenCV's imwrite is 20–30% faster than PIL for JPEG, critical for e-commerce/social media
-            import cv2
-            import numpy as np
             cv_img = cv2.cvtColor(np.array(cropped_img), cv2.COLOR_RGB2BGR)
             cv2.imwrite(output_path, cv_img, [int(cv2.IMWRITE_JPEG_QUALITY), jpeg_quality])
             # Embed ICC profile and EXIF using PIL afterward
@@ -752,10 +750,6 @@ def crop_profile_image(pil_img, box=None, metadata={}, margin=20, neck_offset=50
         print(f"Error during profile crop: {e}")
         return None
 
-import cv2
-import numpy as np
-from PIL import Image
-from torchvision.ops import nms
 # assume get_model has already been called, so `model` is your RetinaFace instance
 
 def head_bust_crop(input_path,
@@ -1144,7 +1138,7 @@ def apply_sepia(pil_img, blend_factor=0.5):
 def remove_background_transparent(cv_img):
     """
     Remove the background from a CV2 image using GrabCut and output an image with transparency.
-    The foreground pixels become fully opaque, and background pixels become transparent.
+    The foreground pixels become fully opaque, and background pixels become transparent. Should work well for images with a clear subject.
     """
     mask = np.zeros(cv_img.shape[:2], np.uint8)
     bgd_model = np.zeros((1, 65), np.float64)
