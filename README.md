@@ -54,7 +54,7 @@ python processing.py
 ```bash
 python gradio_app.py
 ```
-Go to: http://localhost:7860 as Gradio has we
+Go to: http://localhost:7860. Gradio is extremely versatile and can even be used through an API but do as you wish!
 
 ---
 
