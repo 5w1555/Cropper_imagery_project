@@ -1,95 +1,98 @@
- 🖼️ Cropper Imagery — Outil de découpe intelligent d'images par détection de visages (en construction)
+## 🖼️ Cropper Imagery — Python Image Cropping Tool
 
-Un projet personnel : **Cropper Imagery** permet de **découper automatiquement des images** à partir de la détection de visages. L’idée ? Gagner du temps dans des tâches répétitives comme :
+**Cropper Imagery** automatically detects faces and crops images to platform-specific formats (Instagram, LinkedIn, TikTok, etc.).
 
-- Préparer des photos de profil
-- Formater des visuels pour les réseaux sociaux
-- Produire en lot des images prêtes pour le e-commerce
+Built to automate repetitive tasks like:
 
-C’est un outil en Python, pensé pour être rapide, modulaire, et adaptable.
-
----
-
-## ⚙️ Fonctionnalités
-
-- 📸 Détection de visages + points de repère
-- 📐 Découpe selon différents formats (Instagram, LinkedIn, TikTok…)
-- 🔄 Correction automatique de rotation
-- 🖼️ Traitement par lot d’un dossier entier
-- 🧪 Aperçu rapide avant traitement
-- 🪞 Affinage possible (netteté, filtres, marges…)
+* Creating profile pictures
+* Preparing images for social media
+* Preprocessing e-commerce visuals
 
 ---
 
-## 📁 Structure du projet
+### ⚙️ Key Features
 
+* Face detection with landmark recognition
+* Auto-rotation correction
+* Format presets for multiple platforms
+* Batch processing for folders
+* Single file preview with Gradio
+* Image filters: sharpness, margins, lighting
+
+---
+
+### 📁 Project Structure
+
+```
 cropper_imagery/
-│
-├── cropper/                 # Modules de découpe selon parties du visage
-├── processing.py            # Script principal pour traitement par lot
-├── gradio_app.py            # Interface test basique avec Gradio
-├── presets.json             # Formats de découpe disponibles
+├── cropper/            # Face-part-based cropping modules
+├── processing.py       # Batch processing script
+├── gradio_app.py       # Quick preview interface
+├── presets.json        # Configurable format presets
 ├── README.md
+```
 
 ---
 
-## 💡 Utilisation rapide
+### 📂 Installation & Usage
 
-### 1. Installation
-
+```bash
 git clone https://github.com/TechBooper/Cropper_imagery_project
 cd Cropper_imagery_project
 pip install -r requirements.txt
+```
 
-### 2. Traitement d’un dossier
+**To process a folder (requires refactoring the file):**
+Edit `processing.py` as you wish, then run:
 
-Modifier les chemins dans processing.py, puis lancer :
-
+```bash
 python processing.py
+```
 
-### 3. Aperçu de la découpe
+**To preview a classic use (requires Gradio):**
 
-Pour tester un seul fichier avec aperçu (Gradio requis) :
-
+```bash
 python gradio_app.py
+```
+Go to: http://localhost:7860 as Gradio has we
 
 ---
 
-## 🔧 Formats inclus (presets)
+### 🔧 Included Formats
 
-- instagram_square → ratio 1:1
-- linkedin_cover → ratio 1.91:1
-- tiktok_story → ratio 9:16
-- headbust → découpe centrée sur le haut du visage
-- 🎯 100% personnalisable via presets.json
-
----
-
-## 🙋‍♂️ Pourquoi ce projet ?
-
-Je m'appelle **Marwane Wafik**, développeur Python basé en Île-de-France. Ce projet a été conçu comme un exercice technique, avec des **cas d’usage réels**.
-
-🔧 J’utilise Python pour automatiser, structurer et proposer des solutions simples à des problèmes précis.
-🎯 Objectif court terme : rejoindre une équipe tech (freelance, CDI, CDD, alternance ou stage accepté).
+* `instagram_square` → 1:1
+* `linkedin_cover` → 1.91:1
+* `tiktok_story` → 9:16
+* `headbust` → crops top of the face
+* ✅ Fully customizable via `presets.json`
 
 ---
 
-## 📩 Contact
+### 👨‍💻 Author
 
-- GitHub : TechBooper
-- Email : marwanewafik2@gmail.com 
+I'm **Marwane Wafik**, a Python developer based in Île-de-France.
 
----
-
-## 📝 À venir
-
-- Interface utilisateur complète (Tkinter ou web)
-- Amélioration du système de filtre
-- Intégration CLI plus avancée
-- Tests unitaires
+This is a personal production-oriented tool built entirely solo. I'm currently looking to join a tech team.
 
 ---
 
-## 📄 Licence
+### 📩 Contact
 
-MIT — projet libre et réutilisable
+* GitHub: [TechBooper](https://github.com/TechBooper)
+* Email: [marwanewafik2@gmail.com](mailto:marwanewafik2@gmail.com)
+
+---
+
+### 📅 Roadmap (Next Steps)
+
+* Full GUI (Tkinter or Web UI I don't know yet)
+* Improved filter engine
+* CLI integration
+* Full test coverage
+* Refactored functions (It's still very rough)
+
+---
+
+### 📄 License
+
+MIT
