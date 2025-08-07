@@ -70,16 +70,9 @@ Go to: http://localhost:7860. Gradio is extremely versatile and can even be used
 
 ### 👨‍💻 Author
 
-I'm **Marwane Wafik**, a Python developer based in Île-de-France.
+I'm a Python developer based in Île-de-France.
 
-This is a personal production-oriented tool built entirely solo. I'm currently looking to join a tech team.
-
----
-
-### 📩 Contact
-
-* GitHub: [TechBooper](https://github.com/TechBooper)
-* Email: [marwanewafik2@gmail.com](mailto:marwanewafik2@gmail.com)
+This is a personal production-oriented tool built entirely solo to help a friend's business. This is still very much an MVP.
 
 ---
 
