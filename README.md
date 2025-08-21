@@ -72,7 +72,7 @@ Go to: http://localhost:7860. Gradio is extremely versatile and can even be used
 
 I'm a Python developer based in Île-de-France.
 
-This is a personal production-oriented tool built entirely solo to help a friend's business. This is still very much an MVP.
+This is a personal production-oriented tool built entirely solo to help a friend's business.
 
 ---
 
